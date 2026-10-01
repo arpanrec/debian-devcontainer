@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/arpanrec/debian-devcontainer/compare/1.0.0...1.0.1) (2026-10-01)
+
+
+### Bug Fixes
+
+* pin GitHub actions and remove pnpm version configuration ([43584a7](https://github.com/arpanrec/debian-devcontainer/commit/43584a7cdd84a1c6bcc4a03c8f1179f6689ee09a))
+* specify pnpm version 12.8.2 in release workflow ([4e1fef5](https://github.com/arpanrec/debian-devcontainer/commit/4e1fef5b31b5797d7ba5b77136e174c989238ce1))
+
 # 1.0.0 (2026-10-01)
 
 
