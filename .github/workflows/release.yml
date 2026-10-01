@@ -11,14 +11,14 @@ jobs:
         runs-on: ubuntu-24.04
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
               with:
                   fetch-depth: 0
                   persist-credentials: false
 
             - name: Import GPG key
               id: import-gpg
-              uses: crazy-max/ghaction-import-gpg@v6.3.0
+              uses: crazy-max/ghaction-import-gpg@2dc316deee8e90f13e1a351ab510b4d5bc0c82cd # v7.0.0
               with:
                   gpg_private_key: "${{ secrets.GH_BOT_GPG_PRIVATE_KEY }}"
                   passphrase: "${{ secrets.GH_BOT_GPG_PASSPHRASE }}"
@@ -26,21 +26,34 @@ jobs:
                   git_commit_gpgsign: true
                   trust_level: 5
 
+            - name: Setup pnpm
+              uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
+              with:
+                  version: 10.22
+
             - name: Setup Node
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
               with:
                   node-version: 24
+                  cache-dependency-path: .github/files/pnpm-lock.yaml
+                  cache: pnpm
+
+            - name: Install node dependencies
+              run: |+
+                  pnpm i @semantic-release/changelog@7.0.0 \
+                      @semantic-release/commit-analyzer@13.0.1 \
+                      @semantic-release/exec@7.1.0 \
+                      @semantic-release/git@11.0.1 \
+                      @semantic-release/github@12.0.10 \
+                      @semantic-release/release-notes-generator@14.1.1 \
+                      semantic-release@25.0.9 -D
 
             - name: Release
-              run: |
+              run: |+
                   git config --global user.email "${{ steps.import-gpg.outputs.email }}"
                   git config --global user.name "${{ steps.import-gpg.outputs.name }}"
-                  npx --yes \
-                      -p semantic-release@25.0.9 \
-                      -p @semantic-release/commit-analyzer@13.0.1 \
-                      -p @semantic-release/release-notes-generator@14.1.1 \
-                      -p @semantic-release/github@12.0.10 \
-                      semantic-release --extends ./.github/files/release.config.cjs
+                  git config --global user.name "${{ steps.import-gpg.outputs.name }}"
+                  pnpm dlx semantic-release@25.0.9 --extends ./.github/files/release.config.cjs
               env:
                   GITHUB_TOKEN: "${{ secrets.GH_BOT_API_TOKEN }}"
                   GIT_AUTHOR_NAME: "${{ steps.import-gpg.outputs.name }}"
