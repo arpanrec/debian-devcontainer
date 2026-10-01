@@ -24,13 +24,6 @@ module.exports = {
             },
         ],
         [
-            '@semantic-release/exec',
-            {
-                prepareCmd: [],
-                successCmd: '',
-            },
-        ],
-        [
             '@semantic-release/changelog',
             {
                 changelogFile: 'CHANGELOG.md',
