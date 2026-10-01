@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/arpanrec/debian-devcontainer/compare/1.0.1...1.0.2) (2026-10-01)
+
+
+### Bug Fixes
+
+* add latest tag and configure registry-based caching in docker-publish workflow ([ef4c901](https://github.com/arpanrec/debian-devcontainer/commit/ef4c901059e01ecd71bb0b89149ef6edab7a8dcc))
+
 ## [1.0.1](https://github.com/arpanrec/debian-devcontainer/compare/1.0.0...1.0.1) (2026-10-01)
 
 
