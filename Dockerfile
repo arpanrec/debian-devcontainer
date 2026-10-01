@@ -10,6 +10,11 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 RUN apt-get update
 
+RUN LANG=C LC_ALL=C LANGUAGE=C apt-get install -y locales && \
+    sed -i 's/^# *\(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen && \
+    locale-gen && \
+    update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+
 RUN apt-get install -y sudo
 
 RUN apt-get install -y wget curl trurl ca-certificates
@@ -17,11 +22,6 @@ RUN apt-get install -y wget curl trurl ca-certificates
 RUN apt-get install -y tzdata tzdata-legacy tzwatch && \
     ln -snf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime && \
     echo "Asia/Kolkata" > /etc/timezone
-
-RUN apt-get install -y locales && \
-    sed -i 's/^# *\(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen && \
-    locale-gen && \
-    update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
 RUN apt-get install -y neovim vim zsh zsh-doc bash bash-completion zsh-syntax-highlighting zsh-autosuggestions
 
