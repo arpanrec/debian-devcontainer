@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/arpanrec/debian-devcontainer/compare/1.1.0...1.1.1) (2026-10-13)
+
+
+### Bug Fixes
+
+* update script file names in Dockerfile for dotfiles and workspace setup ([79d4111](https://github.com/arpanrec/debian-devcontainer/commit/79d4111bf3a91cc91e64c57bc0bece54f6a830f3))
+
 # [1.1.0](https://github.com/arpanrec/debian-devcontainer/compare/1.0.3...1.1.0) (2026-10-13)
 
 
