@@ -57,6 +57,8 @@ RUN ./setup-workspace.sh --tags all && rm -f ./setup-workspace.sh
 USER root
 WORKDIR /
 
+RUN apt-get install -y rclone
+
 RUN apt-get update && apt-get full-upgrade -y && \
     apt-get autopurge -y && \
     apt-get autoclean -y && \
