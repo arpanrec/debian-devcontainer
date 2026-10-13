@@ -45,15 +45,15 @@ RUN (id -u vscode >/dev/null 2>&1 && userdel -r vscode || true) && \
     (getent group vscode >/dev/null 2>&1 && groupdel vscode || true) && \
     useradd -m -s /bin/zsh -G wheel iac-ctl
 ADD --chown=iac-ctl:iac-ctl --chmod=755 \
-    https://raw.githubusercontent.com/arpanrec/dotfiles/refs/heads/main/install-dotfiles.sh \
-    /tmp/install-dotfiles.sh
+    https://raw.githubusercontent.com/arpanrec/dotfiles/refs/heads/main/install-dotfiles \
+    /tmp/install-dotfiles
 ADD --chown=iac-ctl:iac-ctl --chmod=755 \
-    https://raw.githubusercontent.com/arpanrec/dotfiles/refs/heads/main/setup-workspace.sh \
-    /tmp/setup-workspace.sh
+    https://raw.githubusercontent.com/arpanrec/dotfiles/refs/heads/main/setup-workspace \
+    /tmp/setup-workspace
 USER iac-ctl
 WORKDIR /tmp
-RUN ./install-dotfiles.sh && rm -f ./install-dotfiles.sh
-RUN ./setup-workspace.sh --tags all && rm -f ./setup-workspace.sh
+RUN ./install-dotfiles && rm -f ./install-dotfiles
+RUN ./setup-workspace --tags all && rm -f ./setup-workspace
 USER root
 WORKDIR /
 
