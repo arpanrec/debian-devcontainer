@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/arpanrec/debian-devcontainer/compare/1.0.3...1.1.0) (2026-10-13)
+
+
+### Features
+
+* add rclone installation to Dockerfile ([513b249](https://github.com/arpanrec/debian-devcontainer/commit/513b2492c342920777d2bb27bfef55c4d49fd790))
+
 ## [1.0.3](https://github.com/arpanrec/debian-devcontainer/compare/1.0.2...1.0.3) (2026-10-01)
 
 
