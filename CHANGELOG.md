@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/arpanrec/debian-devcontainer/compare/1.0.2...1.0.3) (2026-10-01)
+
+
+### Bug Fixes
+
+* remove workflow_dispatch trigger from release workflow ([e0b7882](https://github.com/arpanrec/debian-devcontainer/commit/e0b78824b8484da22091a8d77ba1dc378d90f621))
+
 ## [1.0.2](https://github.com/arpanrec/debian-devcontainer/compare/1.0.1...1.0.2) (2026-10-01)
 
 
